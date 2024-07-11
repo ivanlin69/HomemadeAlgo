@@ -18,18 +18,6 @@ This repository is created for educational purposes, providing implementations o
 
 - Recursion
 
-### C++ Implementations
-
-- Array
-- Matrix
-- Singly Linked List
-- Stack (with Array)
-- Stack (with Linked List)
-- Queue (with Array)
-- Queue (with Circular Array)
-- Queue (with Linked List)
-- Binary Tree
-- Binary Search Tree
 
 ## License
 This project is licensed under the MIT License - see the [MIT License Documentation](https://opensource.org/licenses/MIT) for details.
