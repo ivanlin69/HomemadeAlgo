@@ -17,6 +17,7 @@ This repository is created for educational purposes, providing implementations o
 ### C Implementations
 
 - Recursion
+- Sorting (On-going)
 
 
 ## License
