@@ -14,10 +14,19 @@ This repository is created for educational purposes, providing implementations o
 
 ## Implemented Algorithms
 
-### C Implementations
+### Recursion
 
-- Recursion
-- Sorting (On-going)
+- Sum of Natural Numbers
+- Factorial
+- Power
+- Taylor Series
+- Fibonacci
+- Combination
+- Hanoi Tower
+
+
+### Sorting
+- Bubble sort
 
 
 ## License
