@@ -93,7 +93,54 @@ void SelectionSort(int *A, int n){
 
     }
 }
+
+/**
+ # Idea: If all the elements before the element ara smaller, and all the elements after the element are bigger, then the element is sorted.
+ # (max) of comparison: O(nlog(n))
+ # (max) of swap: n(only swap if condition is met for each pass), which is the only sorting algo that requires O(n) swaps
+ # Extra memories are not required
+ # Time: min: O(nlog(n)), if pivot is middle element(after sorted), which means it's a perfect partition; max: O(n^2) for the worst case if the leftmost or rightmost element is chosen as pivot. the average time is: O(nlog(n))
+ # It's not stable
+ # It's not adaptive
+ # Partitioning swaps elements across the pivot, disrupting the relative order of equal elements, so it's not stable. To make it stable, we would need additional space or more complex partitioning scheme that preserves order, which is not typically done because it sacrifices the in-place nature and simplicity of QuickSort.
+ 
+ # This is the case that we choose first element as pivot. Now if we choose middle element as pivot, then the best case and the worst case will be reversed.
+*/
+void QuickSort(int *A, int l, int r){
     
+    if(l >= r){
+        return;
+    }
+    /**
+     # If we want to change the candidate of pivot, like middle:
+        int mid = l + (r-l)/2; // prevent overflow
+      Swap(&A[mid], &A[l]);  // Move the pivot to the front
+     
+     # Or we can randomly choose pivot everytime, that will be randomized Quick sort
+     */
+    int pivot = A[l];
+    int i = l + 1;
+    int j = r;
+    
+    while(1){
+        // make sure all the range is covered, A[i] <= pivot and A[j] > pivot
+        while(A[i] <= pivot && i <= r){
+            i++;
+        }
+        while(A[j] > pivot && j >= l){
+            j--;
+        }
+        if(i > j){
+            break;
+        }
+        Swap(&A[i], &A[j]);
+        i++;
+        j--;
+    }
+    Swap(&A[j], &A[l]);
+    QuickSort(A, l, j-1);
+    QuickSort(A, j+1, r);
+}
 
 
 #endif /* Sorting_h */
