@@ -9,7 +9,8 @@ int main(int argc, const char * argv[]) {
     int length = 8;
     
     //BubbleSort(A, length);
-    InsertionSort(A, length);
+    //InsertionSort(A, length);
+    SelectionSort(A, length);
     
     for(size_t i=0; i<length; i++){
         printf("%d ", A[i]);

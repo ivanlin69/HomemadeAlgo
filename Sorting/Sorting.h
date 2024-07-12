@@ -68,4 +68,32 @@ void InsertionSort(int *A, int n){
 }
 
 
+/**
+ # (max) of comparison: n^2
+ # (max) of swap: n(only swap if condition is met for each pass), which is the only sorting algo that requires O(n) swaps
+ # Extra memories are not required
+ # Time: min=max: O(n^2) for the worst case
+ # It's not stable(the order of duplicates can be changed)
+ # It's not adaptive, it must iterate through the unsorted portion to find the local minimum
+ # Like Bubble sort, it provides useful information(k passes, k sorted elements)
+*/
+void SelectionSort(int *A, int n){
+    size_t i, j, k = 0;
+    for(i=0; i<n-1; i++){
+        k = i;
+        for(j=i+1; j<n; j++){
+            if(A[j] < A[k]){
+                k = j;
+            }
+        }
+        
+        if(k != i){
+            Swap(&A[k], &A[i]);
+        }
+
+    }
+}
+    
+
+
 #endif /* Sorting_h */
