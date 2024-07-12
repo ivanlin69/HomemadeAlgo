@@ -29,6 +29,7 @@ This repository is created for educational purposes, providing implementations o
 - Bubble sort
 - Insertion sort
 - Selection sort
+- Quick sort
 
 
 ## License
