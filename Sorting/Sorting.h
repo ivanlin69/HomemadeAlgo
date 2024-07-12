@@ -10,12 +10,14 @@ void Swap(int *a, int *b){
     *b = temp;
 }
 
-// # (max) of comparison = n^2
-// # (max) of swap = n^2
-// extra memories are not required
-// min time: O(n) if sorted, O(n^2) for the worst case
-// it's stable(order of duplicates are not changed)
-// it's not adaptive without using flag; otherwise it's adaptive
+/**
+ # (max) of comparison: n^2
+ # (max) of swap: n^2
+ # Extra memories are not required
+ # Time: min: O(n) if sorted, max: O(n^2) for the worst case
+ # It's stable(order of duplicates are not changed)
+ # It's not adaptive without using flag; otherwise it's adaptive
+*/
 void BubbleSort(int *A, int n){
     int count = 0;
     int sorted = 1;  // for adaptivity
@@ -36,13 +38,17 @@ void BubbleSort(int *A, int n){
     }
 }
 
-// # (max) of comparison = n^2
-// # (max) of swap = n^2
-// extra memories are not required
-// min time: O(n) if sorted, O(n^2) for the worst case
-// it's stable(order of duplicates are not changed)
-// it's not adaptive if use nested for loops;
-// but it's adaptive if use while loop to replace the inner loop
+/**
+ # (max) of comparison: n^2
+ # (max) of swap: n^2
+ # Extra memories are not required
+ # Time: min: O(n) if sorted, max: O(n^2) for the worst case
+ # It's stable(order of duplicates are not changed)
+ # It's not adaptive if use nested for loops; but it's adaptive if use while loop to replace the inner loop
+ # Unlike Bubble sort which gives informative results during the process(max/min elements), insertion sort does not. It must execute till the end we can ensure the array is sorted
+ # Implemented with array shifting elements are required, but with linked list aren't(more suitable)
+ # Only Bubble sort anf insertion sort are adaptive in most sorting algorithms
+*/
 void InsertionSort(int *A, int n){
     
     if(n == 1){
