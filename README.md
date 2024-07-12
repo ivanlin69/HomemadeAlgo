@@ -27,6 +27,7 @@ This repository is created for educational purposes, providing implementations o
 
 ### Sorting
 - Bubble sort
+- Insertion sort
 
 
 ## License
