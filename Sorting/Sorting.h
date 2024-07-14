@@ -142,5 +142,73 @@ void QuickSort(int *A, int l, int r){
     QuickSort(A, j+1, r);
 }
 
+int * Merge2Sorted(int *A, int *B, size_t m, size_t n){
+    
+    int * C = (int *) malloc(sizeof(int)*(m+n));
+    size_t i=0, j=0, k=0;
+    
+    while(i<m && j<n){
+        if(A[i] < B[j]){
+            C[k++] = A[i++];
+        } else if(A[i] > B[j]){
+            C[k++] = B[j++];
+        } else{
+            C[k++] = A[i++];
+            C[k++] = B[j++];
+        }
+    }
+    while(i<m){
+        C[k++] = A[i++];
+    }
+    while(j<n){
+        C[k++] = B[j++];
+    }
+    return C;
+}
+
+int * Merge2SortedSingle(int *A, size_t low, size_t mid, size_t high){
+    
+    int * B = (int *) malloc(sizeof(int)*(high-low+1));
+    size_t i=low, j=mid+1, k=0;
+    
+    while(i<mid+1 && j<high+1){
+        if(A[i] < A[j]){
+            B[k++] = A[i++];
+        } else if(A[i] > A[j]){
+            B[k++] = A[j++];
+        } else{
+            B[k++] = A[i++];
+            B[k++] = A[j++];
+        }
+    }
+    while(i<mid+1){
+        B[k++] = A[i++];
+    }
+    while(j<high+1){
+        B[k++] = A[j++];
+    }
+    for(size_t index=low, k=0; index<high+1; index++, k++){
+        A[index] = B[k];
+    }
+    free(B);
+    return A;
+}
+
+void MergeSort(int *A, size_t n){
+    size_t i=0, p=0, low=0, mid=0, high=0;
+    // Gap between elements, can up to n
+    for(p=2; p<n+1; p*=2){
+        for(i=0; i<n-1; i+=p){
+            low = i;
+            high = i+(p-1);
+            mid = low + (high-low)/2;
+            Merge2SortedSingle(A, low, mid, high);
+        }
+    }
+    if(high < n-1){
+        Merge2SortedSingle(A, 0, high, n-1);
+    }
+}
+
 
 #endif /* Sorting_h */
