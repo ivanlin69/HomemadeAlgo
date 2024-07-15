@@ -285,14 +285,10 @@ void ShellSort(int *A, size_t n){
             p1 = i;
             p2 = i+gap;
             
-            while(p1 >= 0){
-                if(A[p1] > A[p2]){
-                    Swap(&A[p1], &A[p2]);
-                    p2 = p1;
-                    p1 = p1-gap;
-                } else {
-                    break;
-                }
+            while(p1 >= 0 && A[p1] > A[p2]){
+                Swap(&A[p1], &A[p2]);
+                p2 = p1;
+                p1 = p1-gap;
             }
         }
         gap = gap/2;
