@@ -16,7 +16,7 @@ int main(int argc, const char * argv[]) {
     //InsertionSort(A, length);
     //SelectionSort(A, length);
     //QuickSort(A, 0, lengthA-1);
-    MergeSort(A, lengthA);
+    MergeSortR(A, 0, lengthA-1);
     
     for(size_t i=0; i<lengthA; i++){
         printf("%d ", A[i]);

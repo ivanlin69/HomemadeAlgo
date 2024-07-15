@@ -166,6 +166,7 @@ int * Merge2Sorted(int *A, int *B, size_t m, size_t n){
     return C;
 }
 
+// In comparison based sorting, merge sort is the only algorithm requires extra spaces
 int * Merge2SortedSingle(int *A, size_t low, size_t mid, size_t high){
     
     int * B = (int *) malloc(sizeof(int)*(high-low+1));
@@ -208,6 +209,27 @@ void MergeSort(int *A, size_t n){
     if(high < n-1){
         Merge2SortedSingle(A, 0, high, n-1);
     }
+}
+
+/**
+ # Idea: 2-way sorting(merge 2 sorted list, and a list with single element is sorted).
+ # (max) of comparison: O(nlog(n))
+ # NO swap
+ # Extra memories are required
+ # Time: min: O(nlog(n)), if pivot is middle element(after sorted), which means it's a perfect partition; max: O(n^2) for the worst case if the leftmost or rightmost element is chosen as pivot. the average time is: O(nlog(n))
+ # It's stable
+ # It's not adaptive
+*/
+void MergeSortR(int *A, size_t low, size_t high){
+    
+    if(low >= high){
+        return;
+    }
+    // post order
+    size_t mid = low + (high - low)/2;
+    MergeSortR(A, low, mid);
+    MergeSortR(A, mid+1, high);
+    Merge2SortedSingle(A, low, mid, high);
 }
 
 
