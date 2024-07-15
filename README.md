@@ -30,6 +30,7 @@ This repository is created for educational purposes, providing implementations o
 - Insertion sort
 - Selection sort
 - Quick sort
+- Merge sort
 
 
 ## License
