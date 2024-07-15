@@ -24,7 +24,6 @@ This repository is created for educational purposes, providing implementations o
 - Combination
 - Hanoi Tower
 
-
 ### Sorting
 - Bubble sort
 - Insertion sort
@@ -32,6 +31,10 @@ This repository is created for educational purposes, providing implementations o
 - Quick sort
 - Merge sort
 - Count sort
+- Shell sort
+
+### Hashing
+
 
 
 ## License
