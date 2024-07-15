@@ -31,6 +31,7 @@ This repository is created for educational purposes, providing implementations o
 - Selection sort
 - Quick sort
 - Merge sort
+- Count sort
 
 
 ## License
