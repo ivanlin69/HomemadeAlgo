@@ -40,7 +40,8 @@ int main(int argc, const char * argv[]) {
     printf("\n");
     */
     
-    CountSort(A, lengthA-1);
+    //CountSort(A, lengthA);
+    ShellSort(A, lengthA);
     
     for(size_t i=0; i<lengthA; i++){
         printf("%d ", A[i]);

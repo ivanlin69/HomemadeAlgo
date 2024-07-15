@@ -17,6 +17,7 @@ void Swap(int *a, int *b){
  # Time: min: O(n) if sorted, max: O(n^2) for the worst case
  # It's stable(order of duplicates are not changed)
  # It's not adaptive without using flag; otherwise it's adaptive
+ # (An adaptive sorting algorithm is one that has better performance when the input data is already partially sorted or sorted.)
 */
 void BubbleSort(int *A, int n){
     int count = 0;
@@ -264,5 +265,39 @@ void CountSort(int *A, size_t n){
     }
     free(hashing);
 }
+
+/**
+ # Idea: Take the concept of insertion sort
+ # The time complexity is related to the selection of GAP
+ # Since it uses idea of insertion sort, it's a comparison based algorithm
+ # No extra memories is needed
+ # Time: less than O(n^2), for this case, is O(nlog(n)) if we see each pass as just n
+ #  If using primary number with gap then it can be like O(n^3/2) or O(n^5/3)
+ # It's not stable, large-gap exchanges can disrupt the relative order of duplicates
+ # It's adaptive. Given a sorted array can improve its efficency
+*/
+void ShellSort(int *A, size_t n){
+    int gap = (int) n/2;
+    
+    while(gap >= 1){
+        int p1=0, p2=0;
+        for(int i=0; i<n && p2<n; i++){
+            p1 = i;
+            p2 = i+gap;
+            
+            while(p1 >= 0){
+                if(A[p1] > A[p2]){
+                    Swap(&A[p1], &A[p2]);
+                    p2 = p1;
+                    p1 = p1-gap;
+                } else {
+                    break;
+                }
+            }
+        }
+        gap = gap/2;
+    }
+}
+
 
 #endif /* Sorting_h */
