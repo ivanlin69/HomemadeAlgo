@@ -232,5 +232,37 @@ void MergeSortR(int *A, size_t low, size_t high){
     Merge2SortedSingle(A, low, mid, high);
 }
 
+/**
+ # Idea: Take the advantage of indices
+ # Normally is only used with non-negative integers
+ # Can handle duplicates also since it stores the count of the element
+ # Not comparison based algorithm
+ # NO swap
+ # It requires significant memories if the maximum element is big
+ # Time: O(n)
+ # It's stable
+ # It's not adaptive
+*/
+void CountSort(int *A, size_t n){
+    
+    int max = A[0];
+    for(size_t i=0; i<n; i++){
+        if(A[i] > max){
+            max = A[i];
+        }
+    }
+    int *hashing = (int *) calloc(max+1, sizeof(int));
+    for(size_t i=0; i<n; i++){
+        hashing[A[i]] += 1;
+    }
+    size_t j=0;
+    for(int i=0; i<max+1; i++){
+        while(hashing[i] > 0){
+            A[j++] = i;
+            hashing[i]--;
+        }
+    }
+    free(hashing);
+}
 
 #endif /* Sorting_h */

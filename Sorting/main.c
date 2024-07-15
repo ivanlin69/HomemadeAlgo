@@ -16,13 +16,9 @@ int main(int argc, const char * argv[]) {
     //InsertionSort(A, length);
     //SelectionSort(A, length);
     //QuickSort(A, 0, lengthA-1);
-    MergeSortR(A, 0, lengthA-1);
+    //MergeSortR(A, 0, lengthA-1);
     
-    for(size_t i=0; i<lengthA; i++){
-        printf("%d ", A[i]);
-    }
-    printf("\n");
-    
+    /*
     int * Merge = Merge2Sorted(B, D, lengthA, lengthD);
     printf("Test for merge: \n");
     for(size_t i=0; i<lengthA+lengthD; i++){
@@ -42,6 +38,15 @@ int main(int argc, const char * argv[]) {
         printf("%d ", A[i]);
     }
     printf("\n");
+    */
+    
+    CountSort(A, lengthA-1);
+    
+    for(size_t i=0; i<lengthA; i++){
+        printf("%d ", A[i]);
+    }
+    printf("\n");
+    
 
     return 0;
 }
