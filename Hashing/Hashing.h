@@ -80,7 +80,6 @@ void FreeHC(struct hashChaining *h){
  #  This is also the drawback of linear probing, half spaces is wasted and time comsuming(due to clusters), also it's exhausting for deleting an element since we need to check the post elements and see if they needed to be shifted(normally is solved by rehashing all elements), and that's the reason why it's commonly not encouraged to delete an element if you use linear probing
  */
 struct hashLinearProb{
-    // an array of pointers to nodes
     int *hashing;
 };
 
@@ -130,5 +129,60 @@ void FreeHLP(struct hashLinearProb *h){
     free(h->hashing);
 }
 
+/**
+ # Closed Hashing - Quadratic Probing
+ # Similar to linear probing, except that it reduce the primary cluster(but creates secondary cluster)
+ */
+struct hashQuadProb{
+    int *hashing;
+};
+
+void InitializeHQP(struct hashQuadProb *h){
+    h->hashing = (int *) malloc(sizeof(int)*hashingSIZE);
+    for(size_t i=0; i<hashingSIZE; i++){
+        h->hashing[i] = -1;
+    }
+}
+
+int InsertHQP(struct hashQuadProb *h, int value){
+    if(h == NULL){
+        printf("Invalid hashing.\n");
+        return -1;
+    }
+    
+    int index = hashFunction(value);
+    int i = 1;
+    while(h->hashing[index] != -1 && i<hashingSIZE){
+        index = (value + i*i) % hashingSIZE;
+        i++;
+    }
+    h->hashing[index] = value;
+    return 0;
+}
+
+int SearchHQP(struct hashQuadProb *h, int value){
+    if(h == NULL){
+        printf("Invalid hashing.\n");
+        return -1;
+    }
+    int index = hashFunction(value);
+    int r = h->hashing[index];
+    int i = 0;
+    while(r != -1){
+        if(r == value){
+            printf("Element found.\n");
+            return r;
+        }
+        i++;
+        index = (value + i*i) % hashingSIZE;
+        r = h->hashing[index];
+    }
+    printf("Element not found.\n");
+    return -1;
+}
+
+void FreeHQP(struct hashQuadProb *h){
+    free(h->hashing);
+}
 
 #endif /* Hashing_h */

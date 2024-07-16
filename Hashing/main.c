@@ -3,6 +3,7 @@
 
 int main(int argc, const char * argv[]) {
     
+    printf("Chaining:\n");
     struct hashChaining hc;
     InitializeHC(&hc);
     int A[] = {3, 8, 5, 4, 19, 13};
@@ -17,7 +18,7 @@ int main(int argc, const char * argv[]) {
     
     FreeHC(&hc);
     
-    
+    printf("LinearProb:\n");
     struct hashLinearProb hlp;
     InitializeHLP(&hlp);
     int B[] = {12, 25, 35, 36};
@@ -28,9 +29,20 @@ int main(int argc, const char * argv[]) {
     }
     
     printf("Search for 35: %d  \n", SearchHLP(&hlp, 35));
-    //printf("Delete for 13: %d  \n", DeleteHLP(&hlp, 13));
     
     FreeHLP(&hlp);
+
+    printf("QuadProb:\n");
+    struct hashQuadProb hqp;
+    InitializeHQP(&hqp);
+    int C[] = {13, 23, 43, 37};
+    int lengthC = 4;
     
+    for(size_t i=0; i<lengthC; i++){
+        InsertHQP(&hqp, C[i]);
+    }
+    printf("Search for 23: %d  \n", SearchHQP(&hqp, 23));
+    
+    FreeHQP(&hqp);
     return 0;
 }
