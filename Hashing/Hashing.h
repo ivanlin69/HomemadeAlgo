@@ -6,7 +6,13 @@
 #include "LinkedList.h"
 
 /**
- # Open Hasing - Chainging
+ # Hash collision techniques
+ # Open hashing - Chainging
+ # Close hashing - Linear probing,
+ */
+
+/**
+ # Open Hashing - Chainging
  # Here we use simple hashing function(%10) to simulate
  */
 struct hashChaining{
