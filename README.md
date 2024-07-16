@@ -36,6 +36,7 @@ This repository is created for educational purposes, providing implementations o
 ### Hashing
 - Chaining
 - Linear probing
+- Quadratic probing
 
 
 ## License
