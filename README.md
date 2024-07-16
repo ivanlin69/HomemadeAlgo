@@ -34,7 +34,8 @@ This repository is created for educational purposes, providing implementations o
 - Shell sort
 
 ### Hashing
-
+- Chaining
+- Linear probing
 
 
 ## License
